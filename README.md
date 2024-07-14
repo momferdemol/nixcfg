@@ -1,2 +1,17 @@
+
+<pre>
+  Title: NixOS configurations
+  Author: Momfer de Mol
+  Status: WIP
+  Created: 14-07-2024
+</pre>
+
 # nixcfg
- A list of different NixOS configurations
+
+## virtual-machine
+
+- [vm-grafana](./vm-grafana)
+
+## lxc (container)
+
+- [lxc-jellyfin](./lxc-jellyfin/)
