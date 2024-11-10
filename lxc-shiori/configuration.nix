@@ -1,16 +1,7 @@
 { modulesPath, config, pkgs, ... }:
- 
-  let
-  hostname = "lxc-shiori";
-  user = "admin";
-  password = "temp";
 
-  timeZone = "Europe/Amsterdam";
-  defaultLocale = "en_US.UTF-8";
-
-in {
+{
   imports = [
-    # Include the default lxc/lxd configuration.
     "${modulesPath}/virtualisation/lxc-container.nix"
   ];
 
@@ -19,7 +10,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   networking = {
-    hostName = hostname;
+    hostName = "lxc-shiori";
     networkmanager = {
       enable = true;
     };
@@ -28,33 +19,20 @@ in {
     };
   };
 
+  time.timeZone = "Europe/Amsterdam";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
   environment.systemPackages = with pkgs; [
     shiori
   ];
 
   services.openssh.enable = true;
 
-  time.timeZone = timeZone;
-
-  i18n = {
-    defaultLocale = defaultLocale;
-    extraLocaleSettings = {
-      LC_ADDRESS = defaultLocale;
-      LC_IDENTIFICATION = defaultLocale;
-      LC_MEASUREMENT = defaultLocale;
-      LC_MONETARY = defaultLocale;
-      LC_NAME = defaultLocale;
-      LC_NUMERIC = defaultLocale;
-      LC_PAPER = defaultLocale;
-      LC_TELEPHONE = defaultLocale;
-      LC_TIME = defaultLocale;
-    };
-  };
-
-  users.users."${user}" = {
+  users.users.admin = {
     isNormalUser = true;
     description = "Administrator";
-    password = password;
+    password = "nopassword";
     extraGroups = [ "wheel" "networkmanager"];
     home = "/home/admin";
     shell = pkgs.zsh;
