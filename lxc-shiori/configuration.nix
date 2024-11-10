@@ -48,19 +48,6 @@
     address = "127.0.0.1";
   };
 
-  # Enable passwordless sudo.
-  security.sudo.extraRules = [
-    {
-      users = [user];
-      commands = [
-        {
-          command = "ALL";
-          options = ["NOPASSWD"];
-        }
-      ];
-    }
-  ];
-
   # Supress systemd units that don't work because of LXC.
   # https://blog.xirion.net/posts/nixos-proxmox-lxc/#configurationnix-tweak
   systemd.suppressedSystemUnits = [
