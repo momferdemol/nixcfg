@@ -46,6 +46,7 @@
     enable = true;
     port = 8080;
     address = "127.0.0.1";
+    webRoot = "/home/admin/shiori";
   };
 
   # Supress systemd units that don't work because of LXC.
