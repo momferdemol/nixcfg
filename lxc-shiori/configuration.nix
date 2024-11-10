@@ -3,6 +3,7 @@
   let
   hostname = "lxc-shiori";
   user = "admin";
+  password = "temp";
 
   timeZone = "Europe/Amsterdam";
   defaultLocale = "en_US.UTF-8";
@@ -53,6 +54,7 @@ in {
   users.users."${user}" = {
     isNormalUser = true;
     description = "Administrator";
+    password = password;
     extraGroups = [ "wheel" "networkmanager"];
     home = "/home/admin";
     shell = pkgs.zsh;
