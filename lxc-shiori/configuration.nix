@@ -33,7 +33,7 @@
     isNormalUser = true;
     description = "User for shiori";
     password = "nopassword";
-    extraGroups = [ "wheel" "networkmanager"];
+    extraGroups = [ "users" "wheel" "networkmanager"];
     createHome = true;
     home = "/home/shiori";
   };
@@ -42,7 +42,7 @@
     enable = true;
     port = 8080;
     address = "0.0.0.0";
-    webRoot = "/home/admin/shiori";
+    webRoot = "/home/shiori";
   };
 
   # Supress systemd units that don't work because of LXC.
