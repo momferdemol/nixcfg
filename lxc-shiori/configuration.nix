@@ -27,22 +27,8 @@
     shiori
   ];
 
-  services.openssh.enable = true;
-
-  users.users.shiori = {
-    isNormalUser = true;
-    description = "User for shiori";
-    password = "nopassword";
-    extraGroups = [ "users" "wheel" "networkmanager"];
-    createHome = true;
-    home = "/home/shiori";
-  };
-
   services.shiori = {
     enable = true;
-    port = 8080;
-    address = "0.0.0.0";
-    webRoot = "/home/shiori";
   };
 
   # Supress systemd units that don't work because of LXC.
