@@ -2,6 +2,10 @@
 
 How To install Jellyfin on LXC Proxmox (container)
 
+```
+Didn't use nixos yet to create this container.
+```
+
 # Hardware
 
 iKOOLCORE with i3-N300 (Alder Lake)

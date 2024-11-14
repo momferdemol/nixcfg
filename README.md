@@ -15,3 +15,4 @@
 ## lxc (container)
 
 - [lxc-jellyfin](./lxc-jellyfin/)
+- [lxc-shiori](./lxc-shiori/)

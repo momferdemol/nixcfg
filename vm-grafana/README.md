@@ -2,6 +2,10 @@
 
 How To install grafana on VM Proxmox (virtual machine)
 
+# TODO
+
+- complete configuration with nix
+
 # Hardware
 
 iKOOLCORE with i3-N300 (Alder Lake)
