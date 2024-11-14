@@ -29,23 +29,19 @@
 
   services.openssh.enable = true;
 
-  users.users.admin = {
+  users.users.shiori = {
     isNormalUser = true;
-    description = "Administrator";
+    description = "User for shiori";
     password = "nopassword";
     extraGroups = [ "wheel" "networkmanager"];
-    home = "/home/admin";
-    shell = pkgs.zsh;
-  };
-
-  programs = {
-    zsh.enable = true;
+    createHome = true;
+    home = "/home/shiori";
   };
 
   services.shiori = {
     enable = true;
     port = 8080;
-    address = "127.0.0.1";
+    address = "0.0.0.0";
     webRoot = "/home/admin/shiori";
   };
 
