@@ -39,17 +39,17 @@ pct create "$(pvesh get /cluster/nextid)" \
   --start 0
   ```
 
-  ```
-  rm /etc/nixos/configuration.nix && \
+```
+rm /etc/nixos/configuration.nix && \
 curl https://raw.githubusercontent.com/momferdemol/nixcfg/refs/heads/main/lxc-shiori/configuration.nix \
-  > /etc/nixos/configuration.nix
-  ```
+> /etc/nixos/configuration.nix
+```
 
-  ```
-  nix-channel --update
-  ```
+```
+nix-channel --update
+```
 
-  ```
-  nixos-rebuild switch --upgrade && \
-  poweroff --reboot
-  ```
+```
+nixos-rebuild switch --upgrade && \
+poweroff --reboot
+```
