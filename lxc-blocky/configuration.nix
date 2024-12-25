@@ -29,25 +29,25 @@
     blocky
   ];
 
-  # services.blocky = {
-  #   enable = true;
-  #   settings = {
-  #     ports.dns = 53;
-  #     connectIPVersion = "v4";
-  #     upstreams = {
-  #       groups = {
-  #         default = [
-  #           "1.1.1.1"           # Cloudflare
-  #           "208.67.222.222"    # OpenDNS
-  #           "9.9.9.9"           # Quad9
-  #           "8.8.8.8"           # Google
-  #           "195.121.1.34"      # KPN primary
-  #           "195.121.1.66"      # KPN secondary
-  #         ];
-  #       strategy = "parallel_best";
-  #       timeout = "2s";
-  #       };
-  #     };
+  services.blocky = {
+    enable = true;
+    settings = {
+      ports.dns = 53;
+      connectIPVersion = "v4";
+      upstreams = {
+        groups = {
+          default = [
+            "1.1.1.1"           # Cloudflare
+            "208.67.222.222"    # OpenDNS
+            "9.9.9.9"           # Quad9
+            "8.8.8.8"           # Google
+            "195.121.1.34"      # KPN primary
+            "195.121.1.66"      # KPN secondary
+          ];
+        strategy = "parallel_best";
+        timeout = "2s";
+        };
+      };
   #     customDNS = {
   #       customTTL = "1h";
   #       filterUnmappedTypes = true;
@@ -64,8 +64,8 @@
   #       prefetchExpires = "12h";
   #       prefetchThreshold = 2;
   #     };
-  #   };
-  # };
+    };
+  };
 
   # supress systemd units that don't work because of LXC
   systemd.suppressedSystemUnits = [
