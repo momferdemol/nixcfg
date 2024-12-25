@@ -64,7 +64,7 @@
         prefetching = true;
         prefetchExpires = "12h";
         prefetchThreshold = 2;
-      }
+      };
     };
   };
 
