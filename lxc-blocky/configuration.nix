@@ -51,13 +51,13 @@
       customDNS = {
         #customTTL = "1h";
         filterUnmappedTypes = true;
-        mapping = [
-          "bucket.d35c.net" [ "192.168.10.26:5000" ]
-          "shiori.d35c.net " [ "192.168.10.30" ]
-          "jellyfin.d35c.net"[ "192.168.10.23:8096" ]
-          "home.d35c.net" [ "192.168.20.25:8123" ]
-          "r2.d35c.net" [ "192.168.10.22:8006" ]
-        ];
+        mapping = {
+          "bucket.d35c.net" = "192.168.10.26:5000";
+          "shiori.d35c.net " = "192.168.10.30";
+          "jellyfin.d35c.net" = "192.168.10.23:8096";
+          "home.d35c.net" = "192.168.20.25:8123";
+          "r2.d35c.net" = "192.168.10.22:8006";
+        };
       };
   #     caching = {
   #       prefetching = true;
