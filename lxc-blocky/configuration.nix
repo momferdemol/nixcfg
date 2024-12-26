@@ -44,12 +44,12 @@
             "195.121.1.34"      # KPN primary
             "195.121.1.66"      # KPN secondary
           ];
-        #strategy = "parallel_best";
-        #timeout = "2s";
         };
+        strategy = "parallel_best";
+        timeout = "2s";
       };
       customDNS = {
-        #customTTL = "1h";
+        customTTL = "1h";
         filterUnmappedTypes = true;
         mapping = {
           #"bucket.d35c.net" = "192.168.10.26:5000";
@@ -59,11 +59,11 @@
           #"r2.d35c.net" = "192.168.10.22:8006";
         };
       };
-  #     caching = {
-  #       prefetching = true;
-  #       prefetchExpires = "12h";
-  #       prefetchThreshold = 2;
-  #     };
+      caching = {
+        prefetching = true;
+        prefetchExpires = "12h";
+        prefetchThreshold = 2;
+      };
     };
   };
 
