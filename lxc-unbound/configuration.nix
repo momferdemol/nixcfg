@@ -16,8 +16,8 @@
     };
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 53 ];
-      allowedTCPPorts = [ 53 ];
+      allowedUDPPorts = [ 53 853 ];
+      allowedTCPPorts = [ 53 853 ];
     };
   };
 
@@ -26,6 +26,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   environment.systemPackages = with pkgs; [
+    dig
     unbound
   ];
 
@@ -35,7 +36,7 @@
       server = {
         auto-trust-anchor-file = "/var/lib/unbound/root.key";
         qname-minimisation = true;
-        interface = 0.0.0.0;
+        interface = "0.0.0.0";
         access-control = "192.168.0.0/16 allow";
       };
 
