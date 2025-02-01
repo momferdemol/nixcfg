@@ -11,6 +11,7 @@
 
   networking = {
     hostName = "lxc-unbound";
+    useDHCP = false;
     networkmanager = {
       enable = true;
     };
@@ -38,13 +39,17 @@
         qname-minimisation = true;
         interface = "0.0.0.0";
         access-control = "192.168.0.0/16 allow";
+        private-domain = "d35c.net";
+        local-zone = "lan.d35c.net static";
+        local-data = "home.lan.d35c.net. IN A 192.168.10.1";
       };
 
       forward-zone = [
         {
           name = ".";
           forward-addr = [
-            "1.1.1.1@853#cloudflare-dns.com"
+            "1.1.1.1@853#one.one.one.one"
+            "9.9.9.9@853#dns.quad9.net"
           ];
         }
       ];
