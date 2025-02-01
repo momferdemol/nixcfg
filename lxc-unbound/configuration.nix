@@ -34,7 +34,7 @@
     settings = {
       server = {
         auto-trust-anchor-file = "/var/lib/unbound/root.key";
-        qname-minimisation = "yes";
+        qname-minimisation = true;
         interface = 0.0.0.0;
         access-control = "192.168.0.0/16 allow";
       };
@@ -47,9 +47,9 @@
           ];
         }
       ];
-      
+
       remote-control = {
-        control-enable = "no";
+        control-enable = false;
       };
     };
   };
