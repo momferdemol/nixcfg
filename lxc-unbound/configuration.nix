@@ -11,13 +11,29 @@
 
   networking = {
     hostName = "lxc-unbound";
+    useDHCP = false;
+    interfaces.eth0 = {
+      ipv4.addresses = [
+        {
+          address = "192.168.10.10";
+          prefixLength = 32;
+        }
+      ];
+    };
+
+    defaultGateway = {
+      address = "192.168.10.1";
+      interface = "eth0";
+    };
+
     networkmanager = {
       enable = true;
     };
+
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 53 853 ];
-      allowedTCPPorts = [ 53 853 ];
+      allowedUDPPorts = [ 53 ];
+      allowedTCPPorts = [ 53 ];
     };
   };
 
@@ -44,7 +60,7 @@
         {
           name = ".";
           forward-addr = [
-            "1.1.1.1@853#one.one.one.one"
+            "1.1.1.1"
           ];
         }
       ];
