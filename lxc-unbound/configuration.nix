@@ -47,11 +47,11 @@
           ];
         }
       ];
-
+      
       remote-control = {
         control-enable = "no";
       };
-    }
+    };
   };
 
   # supress systemd units that don't work because of LXC
