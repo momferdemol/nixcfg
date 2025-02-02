@@ -58,7 +58,9 @@
         access-control = "192.168.0.0/16 allow";
         private-domain = "lan.d35c.net";
         local-zone = "\"lan.d35c.net.\" static";
-        local-data = "home.lan.d35c.net. IN A 192.168.10.1";
+        local-data = "\"jellyfin.lan.d35c.net.\tIN A 192.168.10.11\"";
+        local-data = "\"shiori.lan.d35c.net.\tIN A 192.168.10.11\"";
+        local-data = "\"bucket.lan.d35c.net.\tIN A 192.168.10.11\"";
       };
 
       forward-zone = [
