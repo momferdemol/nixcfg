@@ -11,9 +11,29 @@
 
   networking = {
     hostName = "lxc-revproxy";
+    useDHCP = false;
+    interfaces.eth0 = {
+      ipv4.addresses = [
+        {
+          address = "192.168.10.11";
+          prefixLength = 32;
+        }
+      ];
+    };
+
+    defaultGateway = {
+      address = "192.168.10.1";
+      interface = "eth0";
+    };
+
+    nameservers = [
+      "192.168.10.10"
+    ];
+
     networkmanager = {
       enable = true;
     };
+
     firewall = {
       enable = true;
       allowedUDPPorts = [ 80 443 ];
@@ -25,12 +45,32 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  users = {
+    users = {
+      nginxProxy = {
+        home = "/var/lib/nginxProxy";
+        createHome = true;
+        isSystemUser = true;
+        group = "nginxProxy";
+      };
+    };
+
+    groups = {
+      nginxProxy = {
+        members = [ "nginxProxy" ];
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
+    dig
     nginx
   ];
 
   services.nginx = {
     enable = true;
+    user = "nginxProxy";
+    group = "nginxProxy";
     virtualHosts.localhost = {
       locations."/" = {
         return = "200 '<html><body>It works</body></html>'";
