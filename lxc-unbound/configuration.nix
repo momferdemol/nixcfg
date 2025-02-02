@@ -50,13 +50,15 @@
     enable = true;
     settings = {
       server = {
+        verbosity = 2;
+        logfile = "/etc/unbound/unbound.log"
         auto-trust-anchor-file = "/var/lib/unbound/root.key";
         qname-minimisation = true;
         interface = "0.0.0.0";
         access-control = "192.168.0.0/16 allow";
         private-domain = "lan.d35c.net";
-        local-zone = "lan.d35c.net." "static";
-        local-data = "home.lan.d35c.net.  IN A 192.168.10.1";
+        local-zone = "lan.d35c.net.\tstatic";
+        local-data = "home.lan.d35c.net.\tIN A 192.168.10.1";
       };
 
       forward-zone = [
