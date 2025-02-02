@@ -25,9 +25,39 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  users = {
+    users = {
+      nginxProxy = {
+        home = "/var/lib/nginxProxy";
+        createHome = true;
+        isSystemUser = true;
+        group = "nginxProxy";
+      };
+    };
+
+    groups = {
+      nginxProxy = {
+        members = [ "nginxProxy" ];
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
-    ngnix
+    nginx
+    certbot
   ];
+
+  services.nginx = {
+    enable = true;
+    user = "nginxProxy";
+    group = "nginxProxy";
+    recommendedProxySettings = true;
+    virtualHosts."media.lan.d35c.net" = {
+      locations."/" = {
+        proxyPass = "192.168.10.23:8096";
+      };
+    };
+  };
 
   # supress systemd units that don't work because of LXC
   systemd.suppressedSystemUnits = [
