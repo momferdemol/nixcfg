@@ -71,15 +71,27 @@
     enable = true;
     user = "nginxProxy";
     group = "nginxProxy";
-    virtualHosts.localhost = {
+    recommendedProxySettings = true;
+    virtualHosts."media.lan.d35c.net" = {
       locations."/" = {
-        return = "200 '<html><body>It works</body></html>'";
-        extraConfig = ''
-          default_type text/html;
-        '';
+        proxyPass = "http://192.168.10.23:8096";
       };
     };
   };
+
+  # services.nginx = {
+  #   enable = true;
+  #   user = "nginxProxy";
+  #   group = "nginxProxy";
+  #   virtualHosts.localhost = {
+  #     locations."/" = {
+  #       return = "200 '<html><body>It works</body></html>'";
+  #       extraConfig = ''
+  #         default_type text/html;
+  #       '';
+  #     };
+  #   };
+  # };
 
   # supress systemd units that don't work because of LXC
   systemd.suppressedSystemUnits = [
