@@ -41,6 +41,23 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  users = {
+    users = {
+      unbound = {
+        home = "var/lib/unbound";
+        createHome = true;
+        isSystemUser = true;
+        group = "unbound";
+      };
+    };
+  };
+
+  groups = {
+    unbound = {
+      members = [ "unbound" ];
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     dig
     unbound
@@ -48,10 +65,11 @@
 
   services.unbound = {
     enable = true;
+    user = "unbound";
+    group = "unbound";
     settings = {
       server = {
-        verbosity = 2;
-        logfile = "/etc/unbound/unbound.log";
+        verbosity = 1;
         auto-trust-anchor-file = "/var/lib/unbound/root.key";
         qname-minimisation = true;
         interface = "0.0.0.0";
@@ -70,6 +88,7 @@
           name = ".";
           forward-addr = [
             "1.1.1.1"
+            "9.9.9.9"
           ];
         }
       ];
@@ -78,6 +97,7 @@
         control-enable = false;
       };
     };
+    enableRootTrustAnchor = true;
   };
 
   # supress systemd units that don't work because of LXC
