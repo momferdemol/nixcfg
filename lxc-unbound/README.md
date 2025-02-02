@@ -12,6 +12,11 @@ Unbound is a validating, recursive, caching DNS resolver. It is designed to be f
 9.9.9.9           # Quad9
 ```
 
+# Background
+
+- Unbound DNS [tutorial](https://calomel.org/unbound_dns.html)
+- Unbound [documentation](https://unbound.docs.nlnetlabs.nl/en/latest/index.html)
+
 # Installation
 
 ## Proxmox CLI
@@ -25,7 +30,7 @@ CONTAINER_HOSTNAME='lxc-unbound'
 CONTAINER_STORAGE='local-lvm'
 CONTAINER_RAM_IN_MB='1024'
 CONTAINER_CPU_CORES='1'
-CONTAINER_DISK_SIZE_IN_GB='12'
+CONTAINER_DISK_SIZE_IN_GB='8'
 ```
 
 ```sh
