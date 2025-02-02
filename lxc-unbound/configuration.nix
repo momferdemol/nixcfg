@@ -44,7 +44,7 @@
   users = {
     users = {
       unbound = {
-        home = "var/lib/unbound";
+        home = "/var/lib/unbound";
         createHome = true;
         isSystemUser = true;
         group = "unbound";
