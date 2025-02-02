@@ -25,41 +25,18 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  users = {
-    users = {
-      nginxProxy = {
-        home = "/var/lib/nginxProxy";
-        createHome = true;
-        isSystemUser = true;
-        group = "nginxProxy";
-      };
-    };
-
-    groups = {
-      nginxProxy = {
-        members = [ "nginxProxy" ];
-      };
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     nginx
-    certbot
   ];
 
   services.nginx = {
     enable = true;
-    user = "nginxProxy";
-    group = "nginxProxy";
-    recommendedProxySettings = true;
-    virtualHosts."media" = {
-      listen = [
-        {
-          addr = "media.lan.d35c.net";
-        }
-      ];
+    virtualHosts.localhost = {
       locations."/" = {
-        proxyPass = "http://192.168.10.23:8096";
+        return = "200 '<html><body>It works</body></html>'";
+        extraConfig = ''
+          default_type text/html;
+        '';
       };
     };
   };
