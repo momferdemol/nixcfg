@@ -52,9 +52,14 @@
     user = "nginxProxy";
     group = "nginxProxy";
     recommendedProxySettings = true;
-    virtualHosts."media.lan.d35c.net" = {
+    virtualHosts."media" = {
+      listen = [
+        {
+          addr = "media.lan.d35c.net";
+        }
+      ];
       locations."/" = {
-        proxyPass = "192.168.10.23:8096";
+        proxyPass = "http://192.168.10.23:8096";
       };
     };
   };
