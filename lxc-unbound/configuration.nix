@@ -50,11 +50,11 @@
         group = "unbound";
       };
     };
-  };
 
-  groups = {
-    unbound = {
-      members = [ "unbound" ];
+    groups = {
+      unbound = {
+        members = [ "unbound" ];
+      };
     };
   };
 
