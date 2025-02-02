@@ -65,6 +65,7 @@
   environment.systemPackages = with pkgs; [
     dig
     nginx
+    certbot
   ];
 
   services.nginx = {
@@ -72,26 +73,29 @@
     user = "nginxProxy";
     group = "nginxProxy";
     recommendedProxySettings = true;
-    virtualHosts."media.lan.d35c.net" = {
-      locations."/" = {
-        proxyPass = "http://192.168.10.23:8096";
+    virtualHosts = {
+      "media.lan.d35c.net" = {
+        locations."/" = {
+          proxyPass = "http://192.168.10.23:8096";
+        };
+      };
+      "bookmarks.lan.d35c.net" = {
+        locations."/" = {
+          proxyPass = "http://192.168.10.30:8080";
+        };
+      };
+      "bucket.lan.d35c.net" = {
+        locations."/" = {
+          proxyPass = "http://192.168.10.26:5000";
+        };
+      };
+      "r2.lan.d35c.net" = {
+        locations."/" = {
+          proxyPass = "http://192.168.10.22:8006";
+        };
       };
     };
   };
-
-  # services.nginx = {
-  #   enable = true;
-  #   user = "nginxProxy";
-  #   group = "nginxProxy";
-  #   virtualHosts.localhost = {
-  #     locations."/" = {
-  #       return = "200 '<html><body>It works</body></html>'";
-  #       extraConfig = ''
-  #         default_type text/html;
-  #       '';
-  #     };
-  #   };
-  # };
 
   # supress systemd units that don't work because of LXC
   systemd.suppressedSystemUnits = [

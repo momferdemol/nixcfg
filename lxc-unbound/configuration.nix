@@ -80,6 +80,7 @@
           "\"media.lan.d35c.net.\tIN A 192.168.10.11\""
           "\"bookmarks.lan.d35c.net.\tIN A 192.168.10.11\""
           "\"bucket.lan.d35c.net.\tIN A 192.168.10.11\""
+          "\"r2.lan.d35c.net.\tIN A 192.168.10.11\""
         ];
       };
 
