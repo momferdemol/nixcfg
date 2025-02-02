@@ -59,7 +59,9 @@
         private-domain = "lan.d35c.net";
         local-zone = "\"lan.d35c.net.\" static";
         local-data = [
-          "\"proxy.lan.d35c.net.\tIN A 192.168.10.11\""
+          "\"media.lan.d35c.net.\tIN A 192.168.10.11\""
+          "\"bookmarks.lan.d35c.net.\tIN A 192.168.10.11\""
+          "\"bucket.lan.d35c.net.\tIN A 192.168.10.11\""
         ];
       };
 
