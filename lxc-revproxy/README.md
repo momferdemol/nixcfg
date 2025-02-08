@@ -44,27 +44,36 @@ curl https://raw.githubusercontent.com/momferdemol/nixcfg/refs/heads/main/lxc-re
 ```
 
 ```sh
-nix-channel --update
-```
-
-```sh
-nixos-rebuild switch --upgrade && \
-poweroff --reboot
-```
-
-```sh
 nixos-rebuild switch
+```
+
+```sh
+poweroff --reboot
 ```
 
 ## Lets Encrypt
 
 ```sh
 certbot certonly \
--d *.d35c.net \
---manual
+-d "*.lan.d35c.net" \
+-d "lan.d35c.net" \
+--manual \
+--preferred-challenges=dns
+```
+
+```sh
+mkdir /etc/nginx/certs
+```
+
+```sh
+cp [file] /etc/nginx/certs
+```
+
+```sh
+chown -R nginx:nginx /etc/nginx
 ```
 
 ```sh
 certbot revoke \
---cert-name d35c.net
+--cert-name [domain]
 ```

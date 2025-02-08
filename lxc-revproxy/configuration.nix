@@ -77,36 +77,36 @@ in
     user = "nginx";
     group = "nginx";
     recommendedProxySettings = true;
-    #recommendedTlsSettings = true;
+    recommendedTlsSettings = true;
     virtualHosts = {
       "media.lan.d35c.net" = {
-        #forceSSL = true;
-        #sslCertificate = "${PATH}/media/fullchain.pem";
-        #sslCertificateKey = "${PATH}/media/privkey.pem";
+        forceSSL = true;
+        sslCertificate = "${PATH}/fullchain.pem";
+        sslCertificateKey = "${PATH}/privkey.pem";
         locations."/" = {
           proxyPass = "http://192.168.10.23:8096";
         };
       };
       "bookmarks.lan.d35c.net" = {
-        #forceSSL = true;
-        #sslCertificate = CERT_PATH;
-        #sslCertificateKey = CERT_KEY_PATH;
+        forceSSL = true;
+        sslCertificate = "${PATH}/fullchain.pem";
+        sslCertificateKey = "${PATH}/privkey.pem";
         locations."/" = {
           proxyPass = "http://192.168.10.30:8080";
         };
       };
       "bucket.lan.d35c.net" = {
-        #forceSSL = true;
-        #sslCertificate = CERT_PATH;
-        #sslCertificateKey = CERT_KEY_PATH;
+        forceSSL = true;
+        sslCertificate = "${PATH}/fullchain.pem";
+        sslCertificateKey = "${PATH}/privkey.pem";
         locations."/" = {
           proxyPass = "http://192.168.10.26:5000";
         };
       };
       "r2.lan.d35c.net" = {
-        #forceSSL = true;
-        #sslCertificate = CERT_PATH;
-        #sslCertificateKey = CERT_KEY_PATH;
+        forceSSL = true;
+        sslCertificate = "${PATH}/fullchain.pem";
+        sslCertificateKey = "${PATH}/privkey.pem";
         locations."/" = {
           proxyPass = "http://192.168.10.22:8006";
         };
