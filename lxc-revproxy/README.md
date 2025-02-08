@@ -51,3 +51,15 @@ nix-channel --update
 nixos-rebuild switch --upgrade && \
 poweroff --reboot
 ```
+
+## Lets Encrypt
+
+```sh
+certbot certonly -d *.d35c.net --manual
+```
+
+```sh
+certbot revoke --cert-name d35c.net
+```
+
+Path: `/etc/letsencrypt/live/d35c.net/`
