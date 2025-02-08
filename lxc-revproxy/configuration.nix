@@ -15,6 +15,43 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+    dates = "Monday 04:00 UTC";
+    rebootWindow = {
+      lower = "04:00";
+      upper = "06:00";
+    }
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "Monday 07:00 UTC";
+    options = "--delete-older-than 7d";
+  };
+
+  # Run garbage collection whenever there is less than 500MB free space left
+  nix.extraOptions = ''
+    min-free = ${toString (500 * 1024 * 1024)}
+  '';
+
+  # clean up system logs old then 1 month
+  systemd = {
+    services.clear-log = {
+      description = "clean 30+ old logs every week";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.systemd}/bin/journalctl --vacuum-time=30d";
+      };
+    };
+    timers.clear-log = {
+      wantedBy = [ "timers.target" ];
+      partOf = [ "clear-log.service" ];
+      timerConfig.OnCalendar = "weekly UTC";
+    };
+  };
+
   networking = {
     hostName = "lxc-revproxy";
     useDHCP = false;
