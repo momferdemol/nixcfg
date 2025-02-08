@@ -53,18 +53,26 @@ poweroff --reboot
 ```
 
 ```sh
-```sh
 nixos-rebuild switch
 ```
 
 ## Lets Encrypt
 
 ```sh
-certbot certonly -d *.d35c.net --manual
+certbot certonly \
+-d *.d35c.net \
+--manual \
+--config-dir /home/nginxProxy/ \
+--work-dir /home/nginxProxy/ \
+--logs-dir /home/nginxProxy/
 ```
 
 ```sh
-certbot revoke --cert-name d35c.net
+certbot revoke \
+--cert-name d35c.net \
+--config-dir /home/nginxProxy/ \
+--work-dir /home/nginxProxy/ \
+--logs-dir /home/nginxProxy/
 ```
 
 Path: `/etc/letsencrypt/live/d35c.net/`
