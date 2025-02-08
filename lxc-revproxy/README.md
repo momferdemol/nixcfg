@@ -34,7 +34,7 @@ pct create "$(pvesh get /cluster/nextid)" \
   --features nesting=1 \
   --cmode console \
   --onboot 1 \
-  --start 0
+  --start 1
   ```
 
 ```sh
@@ -61,18 +61,10 @@ nixos-rebuild switch
 ```sh
 certbot certonly \
 -d *.d35c.net \
---manual \
---config-dir /home/nginxProxy/ \
---work-dir /home/nginxProxy/ \
---logs-dir /home/nginxProxy/
+--manual
 ```
 
 ```sh
 certbot revoke \
---cert-name d35c.net \
---config-dir /home/nginxProxy/ \
---work-dir /home/nginxProxy/ \
---logs-dir /home/nginxProxy/
+--cert-name d35c.net
 ```
-
-Path: `/etc/letsencrypt/live/d35c.net/`

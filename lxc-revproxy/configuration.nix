@@ -1,8 +1,10 @@
 { modulesPath, config, pkgs, ... }:
 
 let
-  CERT_PATH = "/path/to/";
-  CERT_KEY_PATH = "/path/to/";
+  PATH = "/etc/nginx/certs";
+  CERT = "${PATH}/fullchain.pem";
+  CERT_KEY = "${PATH}/privkey.pem";
+  CERT_CHAIN = "${PATH}/chain.pem";
 in
 
 {
@@ -78,12 +80,13 @@ in
     user = "nginx";
     group = "nginx";
     recommendedProxySettings = true;
-    #recommendedTlsSettings = true;
+    recommendedTlsSettings = true;
     virtualHosts = {
       "media.lan.d35c.net" = {
-        #forceSSL = true;
-        #sslCertificate = CERT_PATH;
-        #sslCertificateKey = CERT_KEY_PATH;
+        forceSSL = true;
+        sslCertificate = CERT;
+        sslCertificateKey = CERT_KEY;
+        sslTrustedCertificate = CERT_CHAIN;
         locations."/" = {
           proxyPass = "http://192.168.10.23:8096";
         };
