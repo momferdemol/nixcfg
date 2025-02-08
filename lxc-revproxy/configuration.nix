@@ -22,7 +22,7 @@ in
     rebootWindow = {
       lower = "04:00";
       upper = "06:00";
-    }
+    };
   };
 
   nix.gc = {
