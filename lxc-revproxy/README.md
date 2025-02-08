@@ -2,6 +2,8 @@
 
 A local network only reverse proxy based on nginx.
 
+Use [certbot](https://eff-certbot.readthedocs.io/en/stable/) to generate TLS certificate.
+
 # Installation
 
 ## Proxmox CLI
@@ -52,6 +54,10 @@ poweroff --reboot
 ```
 
 ## Lets Encrypt
+
+```sh
+nix-shell -p certbot
+```
 
 ```sh
 certbot certonly \
