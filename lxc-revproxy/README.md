@@ -52,6 +52,11 @@ nixos-rebuild switch --upgrade && \
 poweroff --reboot
 ```
 
+```sh
+```sh
+nixos-rebuild switch
+```
+
 ## Lets Encrypt
 
 ```sh

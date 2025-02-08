@@ -48,7 +48,7 @@
   users = {
     users = {
       nginxProxy = {
-        home = "/var/lib/nginxProxy";
+        home = "/home/nginxProxy";
         createHome = true;
         isNormalUser = true;
         group = "nginxProxy";
