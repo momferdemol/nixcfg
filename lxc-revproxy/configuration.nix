@@ -1,5 +1,10 @@
 { modulesPath, config, pkgs, ... }:
 
+let
+  CERT_PATH = "/path/to/";
+  CERT_KEY_PATH = "/path/to/";
+in
+
 {
   imports = [
     "${modulesPath}/virtualisation/lxc-container.nix"
@@ -47,17 +52,17 @@
 
   users = {
     users = {
-      nginxProxy = {
-        home = "/home/nginxProxy";
+      nginx = {
+        home = "/var/lib/nginx";
         createHome = true;
         isNormalUser = true;
-        group = "nginxProxy";
+        group = "nginx";
       };
     };
 
     groups = {
-      nginxProxy = {
-        members = [ "nginxProxy" ];
+      nginx = {
+        members = [ "nginx" ];
       };
     };
   };
@@ -69,40 +74,40 @@
   ];
 
   services.nginx = {
-    enable = true;
-    user = "nginxProxy";
-    group = "nginxProxy";
+    enable = false;
+    user = "nginx";
+    group = "nginx";
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts = {
       "media.lan.d35c.net" = {
         forceSSL = true;
-        sslCertificate = "/home/nginxProxy/live/d35c.net/fullchain.pem";
-        sslCertificateKey = "/home/nginxProxy/live/d35c.net/privkey.pem";
+        sslCertificate = CERT_PATH;
+        sslCertificateKey = CERT_KEY_PATH;
         locations."/" = {
           proxyPass = "http://192.168.10.23:8096";
         };
       };
       "bookmarks.lan.d35c.net" = {
         forceSSL = true;
-        sslCertificate = "/home/nginxProxy/live/d35c.net/fullchain.pem";
-        sslCertificateKey = "/home/nginxProxy/live/d35c.net/privkey.pem";
+        sslCertificate = CERT_PATH;
+        sslCertificateKey = CERT_KEY_PATH;
         locations."/" = {
           proxyPass = "http://192.168.10.30:8080";
         };
       };
       "bucket.lan.d35c.net" = {
         forceSSL = true;
-        sslCertificate = "/home/nginxProxy/live/d35c.net/fullchain.pem";
-        sslCertificateKey = "/home/nginxProxy/live/d35c.net/privkey.pem";
+        sslCertificate = CERT_PATH;
+        sslCertificateKey = CERT_KEY_PATH;
         locations."/" = {
           proxyPass = "http://192.168.10.26:5000";
         };
       };
       "r2.lan.d35c.net" = {
         forceSSL = true;
-        sslCertificate = "/home/nginxProxy/live/d35c.net/fullchain.pem";
-        sslCertificateKey = "/home/nginxProxy/live/d35c.net/privkey.pem";
+        sslCertificate = CERT_PATH;
+        sslCertificateKey = CERT_KEY_PATH;
         locations."/" = {
           proxyPass = "http://192.168.10.22:8006";
         };
