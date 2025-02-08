@@ -1,7 +1,9 @@
 { modulesPath, config, pkgs, ... }:
 
 let
-  PATH = "/etc/nginx/certs";
+  PATH = "/etc/nginx/ssl";
+  CERTIFICATE = "${PATH}/fullchain.pem";
+  CERTIFICATE_KEY = "${PATH}/privkey.pem";
 in
 
 {
@@ -81,32 +83,32 @@ in
     virtualHosts = {
       "media.lan.d35c.net" = {
         forceSSL = true;
-        sslCertificate = "${PATH}/fullchain.pem";
-        sslCertificateKey = "${PATH}/privkey.pem";
+        sslCertificate = CERTIFICATE;
+        sslCertificateKey = CERTIFICATE_KEY;
         locations."/" = {
           proxyPass = "http://192.168.10.23:8096";
         };
       };
       "bookmarks.lan.d35c.net" = {
         forceSSL = true;
-        sslCertificate = "${PATH}/fullchain.pem";
-        sslCertificateKey = "${PATH}/privkey.pem";
+        sslCertificate = CERTIFICATE;
+        sslCertificateKey = CERTIFICATE_KEY;
         locations."/" = {
           proxyPass = "http://192.168.10.30:8080";
         };
       };
       "bucket.lan.d35c.net" = {
         forceSSL = true;
-        sslCertificate = "${PATH}/fullchain.pem";
-        sslCertificateKey = "${PATH}/privkey.pem";
+        sslCertificate = CERTIFICATE;
+        sslCertificateKey = CERTIFICATE_KEY;
         locations."/" = {
           proxyPass = "http://192.168.10.26:5000";
         };
       };
       "r2.lan.d35c.net" = {
         forceSSL = true;
-        sslCertificate = "${PATH}/fullchain.pem";
-        sslCertificateKey = "${PATH}/privkey.pem";
+        sslCertificate = CERTIFICATE;
+        sslCertificateKey = CERTIFICATE_KEY;
         locations."/" = {
           proxyPass = "http://192.168.10.22:8006";
         };

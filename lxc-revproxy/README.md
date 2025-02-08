@@ -62,11 +62,11 @@ certbot certonly \
 ```
 
 ```sh
-mkdir /etc/nginx/certs
+mkdir /etc/nginx/ssl
 ```
 
 ```sh
-cp [file] /etc/nginx/certs
+cp [file] /etc/nginx/ssl
 ```
 
 ```sh
